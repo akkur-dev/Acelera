@@ -1,0 +1,19 @@
+name: .NET & Docker Build Check
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  validate-project:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Build Docker Compose
+      run: docker compose build
+
+    - name: Run .NET Build
+      run: dotnet build sources/Acelera.App/Acelera.App.csproj --configuration Release
