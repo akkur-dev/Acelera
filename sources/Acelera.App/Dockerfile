@@ -12,15 +12,22 @@ EXPOSE 8081
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
-COPY ["Acelera.App.csproj", "./"]
-RUN dotnet restore "Acelera.App.csproj"
-COPY . .
+
+COPY ["sources/Acelera.Core/Acelera.Core.csproj", "Acelera.Core/"]
+COPY ["sources/Acelera.App/Acelera.App.csproj", "Acelera.App/"]
+
+RUN dotnet restore "Acelera.App/Acelera.App.csproj"
+
+COPY ["sources/Acelera.Core/", "Acelera.Core/"]
+COPY ["sources/Acelera.App/", "Acelera.App/"]
+
+WORKDIR "/src/Acelera.App"
 RUN dotnet publish "Acelera.App.csproj" -c Release -o /app/publish
 
 # Этот этап используется для публикации проекта службы, который будет скопирован на последний этап
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
-RUN dotnet publish "./Acelera.App.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "Acelera.App.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 # Этот этап используется в рабочей среде или при запуске из VS в обычном режиме (по умолчанию, когда конфигурация отладки не используется)
 FROM base AS final
