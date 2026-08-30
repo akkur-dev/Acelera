@@ -14,9 +14,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          subjectPattern: '^(feat|fix|docs):\s[A-Za-z0-9]+-\d+-[A-Za-z0-9-]+$'
+          subjectPattern: '^(feat|fix|docs):\s[A-Za-z0-9]+-\d+\.\s.+$'
           subjectPatternError: |
-            Имя pull request не соответствует Conventional Commits
+            Имя pull request не соответствует шаблону. 
+            Пример шаблона: feat: ACLR-0. My awesome task
 
   validate-project:
     runs-on: ubuntu-latest
