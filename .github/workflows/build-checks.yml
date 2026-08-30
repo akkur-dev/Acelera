@@ -14,7 +14,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          subjectPattern: '^(feat|fix|docs):\s[A-Za-z0-9]+-\d+\.\s.+$'
+          subjectPattern: '^[A-Za-z0-9]+-\d+\.\s.+$'
+          types: |
+            feat
+            fix
+            docs
+          requireScope: false
           subjectPatternError: |
             Имя pull request не соответствует шаблону. 
             Пример шаблона: feat: ACLR-0. My awesome task
