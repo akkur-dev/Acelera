@@ -23,7 +23,7 @@ services:
     image: acelera-app:latest
     container_name: acelera_webapi
     build:
-      context: ./sources
+      context: ./sources/Acelera.App
       dockerfile: Dockerfile
     environment:
       - ConnectionStrings__PostgresDb=Host=${POSTGRES_HOST};Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
