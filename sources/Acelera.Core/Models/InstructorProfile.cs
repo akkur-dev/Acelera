@@ -12,7 +12,7 @@ public sealed class InstructorProfile : ProfileBase
     /// Driving experience in years
     /// </summary>
     [JsonPropertyName("experience")]
-    public short Experience { get; set; }
+    public byte Experience { get; set; }
 
     /// <summary>
     /// Has the legal entity status been confirmed

@@ -30,8 +30,8 @@ public sealed class User : ITimeTrackable
     /// The user's age
     /// </summary>
     [Required]
-    [Column("age")]
-    public short Age { get; set; }
+    [Column("age", TypeName = "smallint")]
+    public byte Age { get; set; }
 
     /// <summary>
     /// The user's role on the platform
@@ -65,7 +65,18 @@ public sealed class User : ITimeTrackable
     public DateTime UpdatedAt { get; set; }
 
     /// <summary>
+    /// Driver's license categories
+    /// </summary>
+    [Column("categories")]
+    public List<LicenseCategory> Categories { get; set; } = new();
+
+    /// <summary>
     /// Linked user's accounts
     /// </summary>
     public List<UserAccount>? Accounts { get; set; }
+
+    /// <summary>
+    /// Linked districts
+    /// </summary>
+    public List<District> Districts { get; set; } = new();
 }
