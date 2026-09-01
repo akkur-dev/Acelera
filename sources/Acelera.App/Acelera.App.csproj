@@ -15,6 +15,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Acelera.Domain\Acelera.Domain.csproj" />
+    <ProjectReference Include="..\Acelera.Infrastructure\Acelera.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
