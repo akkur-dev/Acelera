@@ -1,4 +1,4 @@
 <Solution>
   <Project Path="sources/Acelera.App/Acelera.App.csproj" />
-  <Project Path="sources/Acelera.Core/Acelera.Core.csproj" Id="a46878de-70f4-4c6b-b278-3c4299a3ab50" />
+  <Project Path="sources/Acelera.Domain/Acelera.Domain.csproj" />
 </Solution>

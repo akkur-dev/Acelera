@@ -14,7 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Acelera.Core\Acelera.Core.csproj" />
+    <ProjectReference Include="..\Acelera.Domain\Acelera.Domain.csproj" />
   </ItemGroup>
 
 </Project>
