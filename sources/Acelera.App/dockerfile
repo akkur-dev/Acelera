@@ -7,18 +7,19 @@ WORKDIR /app
 EXPOSE 8080
 EXPOSE 8081
 
-
 # Этот этап используется для сборки проекта службы
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 
-COPY ["sources/Acelera.Core/Acelera.Core.csproj", "Acelera.Core/"]
+COPY ["sources/Acelera.Infrastructure/Acelera.Infrastructure.csproj", "Acelera.Infrastructure/"]
+COPY ["sources/Acelera.Domain/Acelera.Domain.csproj", "Acelera.Domain/"]
 COPY ["sources/Acelera.App/Acelera.App.csproj", "Acelera.App/"]
 
 RUN dotnet restore "Acelera.App/Acelera.App.csproj"
 
-COPY ["sources/Acelera.Core/", "Acelera.Core/"]
+COPY ["sources/Acelera.Infrastructure/", "Acelera.Infrastructure/"]
+COPY ["sources/Acelera.Domain/", "Acelera.Domain/"]
 COPY ["sources/Acelera.App/", "Acelera.App/"]
 
 WORKDIR "/src/Acelera.App"

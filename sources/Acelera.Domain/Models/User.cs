@@ -51,8 +51,14 @@ public sealed class User : ITimeTrackable
     /// Profile data
     /// </summary>
     [Required]
-    [Column("name", TypeName = "jsonb")]
-    public ProfileBase? Profile { get; set; }    
+    [Column("profile", TypeName = "jsonb")]
+    public ProfileBase? Profile { get; set; }
+
+    /// <summary>
+    /// Driver's license categories
+    /// </summary>
+    [Column("categories")]
+    public List<LicenseCategory> Categories { get; set; } = new();
 
     /// <inheritdoc/>
     [Required]
@@ -62,13 +68,7 @@ public sealed class User : ITimeTrackable
     /// <inheritdoc/>
     [Required]
     [Column("updated_at")]
-    public DateTime UpdatedAt { get; set; }
-
-    /// <summary>
-    /// Driver's license categories
-    /// </summary>
-    [Column("categories")]
-    public List<LicenseCategory> Categories { get; set; } = new();
+    public DateTime UpdatedAt { get; set; }    
 
     /// <summary>
     /// Linked user's accounts
